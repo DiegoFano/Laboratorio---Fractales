@@ -1,17 +1,25 @@
 #include <math.h>
-#include "turtlec.h"
+#include "../turtlec.h"
 
-void levy(Turtle *turtle, float length, int depth){
-    if(depth == 0){
-        turtleForward(turtle, length);
+// Curva de Lévy
+void levy(Turtle *t, int nivel, float tam){
+
+    // Caso base
+    if(nivel == 0){
+
+        turtleForward(t, tam);
+
         return;
     }
 
-    turtleLeft(turtle, 45);
-    levy(turtle, length / sqrt(2), depth - 1);
+    turtleLeft(t, 45.0f);
 
-    turtleRight(turtle, 90);
-    levy(turtle, length / sqrt(2), depth - 1);
+    levy(t, nivel - 1, tam / sqrtf(2.0f));
 
-    turtleLeft(turtle, 45);
+    turtleRight(t, 90.0f);
+
+    levy(t, nivel - 1, tam / sqrtf(2.0f));
+
+    turtleLeft(t, 45.0f);
 }
+
