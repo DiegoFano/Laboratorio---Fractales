@@ -1,4 +1,4 @@
-#include "../turtlec.h"
+#include "./turtlec.h"
 
 void arbol(Turtle *t, int profundidad, float longitud){
 
@@ -6,13 +6,26 @@ void arbol(Turtle *t, int profundidad, float longitud){
     if(profundidad == 0)
         return;
 
-   turtleLeft(t, 30.0f);
-   turtleForward(t, longitud);
+    // Izquierda
 
-   arbol(t, profundidad - 1, longitud * 0.7f);
+    turtleLeft(t, 30.0f);
+    turtleForward(t, longitud);
 
-    turtleBackward(t, longitud);
-    turtleRight(t, 30.0f);
+      arbol(t, profundidad - 1, longitud * 0.7f);
+
+      turtleBackward(t, longitud);
+
+    // Derecha
+
+    turtleRight(t, 60.0f);
+    turtleForward(t, longitud);
+
+      arbol(t, profundidad - 1, longitud * 0.7f);
+
+      turtleBackward(t, longitud);
+   
+
+      turtleLeft(t, 30.0f);
 }
 
 int main(void){
@@ -31,11 +44,11 @@ int main(void){
     turtleGoTo(t, 400.0f, 580.0f);
     turtlePenDown(t);
 
-   turtleLeft(t, 90.0f);
+    turtleLeft(t, 90.0f);
 
-   turtleForward(t, 80.0f);
+    turtleForward(t, 80.0f);
 
-   arbol(t, 7, 60.0f);
+    arbol(t, 7, 60.0f);
 
     turtleAppRun(app);
     turtleAppDestroy(app);
