@@ -23,3 +23,29 @@ void levy(Turtle *t, int nivel, float tam){
     turtleLeft(t, 45.0f);
 }
 
+
+
+int main(void){
+
+    TurtleApp *app = turtleAppCreate(800, 600, "Curva de Levy");
+
+    if(app == NULL)
+        return 1;
+
+    Turtle *t = turtleAppGetTurtle(app);
+
+    turtleSetColor(t, 255, 255, 255);
+    turtleSetSpeed(t, 10.0f);
+
+    turtlePenUp(t);
+    turtleGoTo(t, 250.0f, 350.0f);
+    turtlePenDown(t);
+
+    levy(t, 12, 300.0f);
+
+    turtleAppRun(app);
+    turtleAppDestroy(app);
+
+    return 0;
+}
+
